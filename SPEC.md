@@ -2,7 +2,7 @@
 
 Stay Organized. Get Things Done.
 
-Meet [Your App Name], the todo app designed to keep life simple, focused, and stress-free. Whether you’re managing daily tasks, planning projects, or keeping track of personal goals, our app helps you stay on top of everything that matters.
+Meet [PigeonToDoApp], the todo app designed to keep life simple, focused, and stress-free. Whether you’re managing daily tasks, planning projects, or keeping track of personal goals, our app helps you stay on top of everything that matters.
 
 ✨ Key Features:
 
@@ -18,4 +18,8 @@ Dark Mode & Custom Themes – Personalize your workspace to match your style.
 
 Collaboration Made Easy – Share lists and work together with friends, family, or teammates.
 
-📅 From small errands to big goals, [Your App Name] helps you turn plans into progress.
+📅 From small errands to big goals, [PigeonToDoApp] helps you turn plans into progress.
+
+# Software description
+
+# Infrastructure description
