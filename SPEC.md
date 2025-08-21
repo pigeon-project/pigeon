@@ -20,6 +20,8 @@ Collaboration Made Easy – Share lists and work together with friends, family, 
 
 📅 From small errands to big goals, [PigeonToDoApp] helps you turn plans into progress.
 
+This app is terrific!
+
 # Software description
 
 # Infrastructure description
