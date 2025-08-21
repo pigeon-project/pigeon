@@ -18,6 +18,8 @@ Dark Mode & Custom Themes – Personalize your workspace to match your style.
 
 Collaboration Made Easy – Share lists and work together with friends, family, or teammates.
 
+This app is for students only.
+
 📅 From small errands to big goals, [PigeonToDoApp] helps you turn plans into progress.
 
 # Software description
