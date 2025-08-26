@@ -22,5 +22,4 @@ Collaboration Made Easy – Share lists and work together with friends, family, 
 
 # Software description
 
-
 # Infrastructure description
