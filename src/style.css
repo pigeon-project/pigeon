@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+  background: #fff;
+  color: #222;
+}
+
+body.dark {
+  background: #222;
+  color: #eee;
+}
+
+form {
+  margin-bottom: 1rem;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.task.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.priority-high {
+  color: #d9534f;
+}
+
+.priority-medium {
+  color: #f0ad4e;
+}
+
+.priority-low {
+  color: #5bc0de;
+}

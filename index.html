@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PigeonToDoApp</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <h1>PigeonToDoApp</h1>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+    <form id="task-form">
+      <input id="task-input" type="text" placeholder="New task" required />
+      <input id="task-date" type="date" />
+      <select id="task-priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+    <ul id="task-list"></ul>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
