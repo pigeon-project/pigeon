@@ -1,7 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders Vite + React heading', () => {
+test('allows users to add tasks', () => {
   render(<App />);
-  expect(screen.getByText(/Vite \+ React/i)).toBeInTheDocument();
+  const input = screen.getByPlaceholderText(/task description/i);
+  fireEvent.change(input, { target: { value: 'Buy milk' } });
+  const addButton = screen.getByRole('button', { name: /add task/i });
+  fireEvent.click(addButton);
+  expect(screen.getByText('Buy milk')).toBeInTheDocument();
 });

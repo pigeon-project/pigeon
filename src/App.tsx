@@ -1,35 +1,112 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+
+interface Task {
+  id: string;
+  text: string;
+  dueDate: string;
+  priority: 'low' | 'medium' | 'high';
+  completed: boolean;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const stored = localStorage.getItem('tasks');
+    return stored ? JSON.parse(stored) : [];
+  });
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [priority, setPriority] = useState<'low' | 'medium' | 'high'>('low');
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const resetForm = () => {
+    setDescription('');
+    setDueDate('');
+    setPriority('low');
+    setEditingId(null);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!description.trim()) return;
+
+    if (editingId) {
+      setTasks(tasks.map(t => t.id === editingId ? { ...t, text: description, dueDate, priority } : t));
+    } else {
+      setTasks([...tasks, { id: crypto.randomUUID(), text: description, dueDate, priority, completed: false }]);
+    }
+    resetForm();
+  };
+
+  const toggleComplete = (id: string) => {
+    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+  };
+
+  const removeTask = (id: string) => {
+    setTasks(tasks.filter(t => t.id !== id));
+  };
+
+  const editTask = (task: Task) => {
+    setDescription(task.text);
+    setDueDate(task.dueDate);
+    setPriority(task.priority);
+    setEditingId(task.id);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <header>
+        <h1>PigeonToDoApp</h1>
+        <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+          {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </header>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Task description"
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+        />
+        <input
+          type="date"
+          value={dueDate}
+          onChange={e => setDueDate(e.target.value)}
+        />
+        <select value={priority} onChange={e => setPriority(e.target.value as any)}>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit">{editingId ? 'Update' : 'Add'} Task</button>
+      </form>
+      <ul className="task-list">
+        {tasks.map(task => (
+          <li key={task.id} className={`task-item ${task.priority} ${task.completed ? 'completed' : ''}`}>
+            <div>
+              <strong>{task.text}</strong><br />
+              {task.dueDate && <small>Due: {task.dueDate}</small>}
+            </div>
+            <div className="task-actions">
+              <button onClick={() => toggleComplete(task.id)}>{task.completed ? 'Undo' : 'Done'}</button>
+              <button onClick={() => editTask(task)}>Edit</button>
+              <button onClick={() => removeTask(task.id)}>Delete</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
