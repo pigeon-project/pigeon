@@ -19,7 +19,9 @@ jobs:
       - run: echo $OPENAI_TOKEN > ~/.codex/auth.json
         env:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-      - run: npx --yes @openai/codex exec --full-auto "Implement a solution described in SPEC.md file"
+      - run: |
+          npx --yes @openai/codex exec --full-auto "Implement a solution described in SPEC.md file. \
+          Add Dockerfile for running the solution. The Dockerfile has to be in the root of the repository."
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: codex version
