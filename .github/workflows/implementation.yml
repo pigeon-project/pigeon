@@ -1,6 +1,8 @@
 name: SPEC.md implementation
 on:
   push:
+    branches-ignore:
+      - main
     paths:
       - 'SPEC.md'
   workflow_dispatch:
