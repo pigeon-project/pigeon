@@ -16,8 +16,7 @@ jobs:
       - run: echo $OPENAI_TOKEN > ~/.codex/auth.json
         env:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-      - run: npx --yes @openai/codex exec "Implement a solution described in SPEC.md file. Create implementation in a form of patch file. Save the patch in the patch.txt file."
-      - run: git apply patch.txt
+      - run: npx --yes @openai/codex exec --full-auto "Implement a solution described in SPEC.md file"
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: codex version
