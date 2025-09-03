@@ -21,7 +21,8 @@ jobs:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
       - run: |
           npx --yes @openai/codex exec --full-auto "Implement a solution described in SPEC.md file. \
-          Add Dockerfile for running the solution. The Dockerfile has to be in the root of the repository."
+          Add Dockerfile for running the solution. The Dockerfile has to be in the root of the repository. \
+          Expose solution on port 8000 in Dockerfile."
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: codex version

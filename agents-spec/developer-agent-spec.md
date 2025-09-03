@@ -25,7 +25,7 @@ It must be valid JSON compatible with this schema:
 
 ```json
 {
-  "body": "{summary of the review}",
+  "body": "{summary of the review in the Markdown format}",
   "event": "{REQUEST_CHANGES|COMMENT|APPROVE}",
   "comments": [
     {
