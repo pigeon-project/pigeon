@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 'latest'
+      - run: mkdir ~/.codex
       - run: echo $OPENAI_TOKEN > ~/.codex/auth.json
         env:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
