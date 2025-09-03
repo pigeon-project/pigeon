@@ -706,4 +706,6 @@ Create a simple UI to demonstrate core flows:
 - Adding/reordering/moving cards.
 - Inviting members.
 
+Use ReactJS or similar; focus on functionality over styling.
+
 *End of specification.*
