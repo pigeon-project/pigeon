@@ -1,0 +1,22 @@
+name: SPEC.md implementation
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'SPEC.md'
+  workflow_dispatch:
+jobs:
+  implementation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          version: latest
+      - run: npx --yes @openai/codex exec "Implement a solution described in SPEC.md file"
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: codex version
+          title: Implementation by Codex Agent
+          body: First version based on spec.md
+          branch: codex-version
