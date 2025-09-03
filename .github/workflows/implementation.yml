@@ -12,10 +12,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 'latest'
-      - run: npx --yes @openai/codex exec "Implement a solution described in SPEC.md file"
       - run: echo $OPENAI_TOKEN > ~/.codex/auth.json
         env:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+      - run: npx --yes @openai/codex exec "Implement a solution described in SPEC.md file"
       - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: codex version
