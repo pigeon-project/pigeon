@@ -3,7 +3,7 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
-MESSAGE = {"message": "Hello, World"}
+MESSAGE = {"message": "Hello, World!!!"}
 
 
 class HelloHandler(BaseHTTPRequestHandler):
@@ -38,4 +38,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-
