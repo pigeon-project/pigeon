@@ -4,6 +4,9 @@ on:
     paths:
       - 'SPEC.md'
   workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   implementation:
     runs-on: ubuntu-latest
